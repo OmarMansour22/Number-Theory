@@ -1,5 +1,8 @@
+const int mod=1e9+7;
+const int N=300500;
+ 
 int mul(int a, int b) {
-    return (1LL * a * b) % mod;
+    return (1ll * a * b) % mod;
 }
  
 int add(int a, int b) {
@@ -7,7 +10,18 @@ int add(int a, int b) {
     b = (b + mod) % mod;
     return (a + b) % mod;
 }
+int fp(int b, int p) {
+    if (b == 1 or p == 0)
+        return 1;
  
+    int ret = fp(b, p >> 1);
+    ret = mul(ret, ret);
+ 
+    if (p & 1)
+        ret = mul(ret, b);
+ 
+    return ret;
+}
 ll modInv(ll n) {
     return fp(n, mod - 2);
 }
@@ -21,6 +35,8 @@ void pre() {
 }
  
 ll nCr(ll n, ll r) {
+    if(r>n)
+    return 0;
     return ((fact[n] * inv[r]) % mod * inv[n - r]) % mod;
 }
  
