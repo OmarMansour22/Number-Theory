@@ -1,5 +1,5 @@
 const int N=1e6+5;
-int notpr[N];
+int notpr[N+5];
 
 void sieve()
 {
